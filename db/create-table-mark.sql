@@ -4,17 +4,11 @@
 
 CREATE TABLE public.mark
 (
-  id bigint NOT NULL,
+  id bigint NOT NULL DEFAULT nextval('mark_id_seq'::regclass),
   "user" bigint NOT NULL,
   book bigint NOT NULL,
   mark smallint,
-  CONSTRAINT mark_primary_key PRIMARY KEY (id),
-  CONSTRAINT mark_book FOREIGN KEY (book)
-      REFERENCES public.book (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
-  CONSTRAINT mark_user FOREIGN KEY ("user")
-      REFERENCES public."user" (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
+  CONSTRAINT mark_primary_key PRIMARY KEY (id)
 )
 WITH (
   OIDS=FALSE
@@ -39,5 +33,4 @@ CREATE INDEX fki_mark_user
   ON public.mark
   USING btree
   ("user");
-
 

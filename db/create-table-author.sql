@@ -1,10 +1,10 @@
 -- Table: public.author
 
--- DROP TABLE public.author;
+DROP TABLE public.author;
 
 CREATE TABLE public.author
 (
-  id bigint NOT NULL,
+  id bigint NOT NULL DEFAULT nextval('author_id_seq'::regclass),
   surname character varying(30) NOT NULL,
   name character varying(30),
   pseudonym character varying(30)[],
@@ -19,4 +19,3 @@ WITH (
 );
 ALTER TABLE public.author
   OWNER TO jb;
-

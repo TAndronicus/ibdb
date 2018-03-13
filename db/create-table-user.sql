@@ -18,4 +18,3 @@ ALTER TABLE public."user"
   OWNER TO jb;
 COMMENT ON TABLE public."user"
   IS 'User data.';
-

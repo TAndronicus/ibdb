@@ -4,7 +4,7 @@
 
 CREATE TABLE public.book
 (
-  id bigint NOT NULL,
+  id bigint NOT NULL DEFAULT nextval('book_id_seq'::regclass),
   title character varying(60) NOT NULL,
   year date,
   publisher character varying(30),
