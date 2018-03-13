@@ -8,5 +8,7 @@ public interface BookService {
 
     BookDao getBookById(long id);
 
-    <T extends BookDao> List<T> getAllBooks();
+    List<BookDao> getAllBooks();
+
+    BookDao save(BookDao bookDao);
 }

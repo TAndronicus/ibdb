@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public <T extends UserDao> T save(T userDao) {
+    public UserDao save(UserDao userDao) {
         return userRepo.save(userDao);
     }
 

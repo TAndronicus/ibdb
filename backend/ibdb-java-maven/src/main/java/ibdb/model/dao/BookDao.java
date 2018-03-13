@@ -2,11 +2,9 @@ package ibdb.model.dao;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -14,12 +12,18 @@ import java.time.LocalDateTime;
 public class BookDao {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto_gen_book")
+    @SequenceGenerator(name = "auto_gen_book", sequenceName = "book_id_seq", allocationSize = 1)
     private Long id;
     private String title;
-    private Long author;
+    private List<Long> author;
     private LocalDateTime year;
     private String publisher;
     private short cathegory;
 
+    public BookDao(String title, List<Long> author, short cathegory) {
+        this.title = title;
+        this.author = author;
+        this.cathegory = cathegory;
+    }
 }

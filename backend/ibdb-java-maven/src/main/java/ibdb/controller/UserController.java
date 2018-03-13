@@ -27,8 +27,9 @@ public class UserController {
     }
 
     @RequestMapping("/save/{surname}/{name}")
-    public <T extends UserDao> T save(@PathVariable String surname, @PathVariable String name) {
-        UserDao userDao = new UserDao();
+    public UserDao save(@PathVariable String surname, @PathVariable String name) {
+        UserDao userDao = new UserDao(surname, name);
+        return userService.save(userDao);
     }
 
 }

@@ -10,4 +10,6 @@ public interface BookRepo extends JpaRepository<BookDao, Long> {
     BookDao findById(long id);
 
     List<BookDao> findAll();
+
+    BookDao save(BookDao bookDao);
 }

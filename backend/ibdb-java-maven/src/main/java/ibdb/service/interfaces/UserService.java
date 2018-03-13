@@ -10,5 +10,5 @@ public interface UserService {
 
     List<UserDao> getAllUsers();
 
-    <T extends UserDao> T save(T userDao);
+    UserDao save(UserDao userDao);
 }

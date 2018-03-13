@@ -11,5 +11,5 @@ public interface UserRepo extends JpaRepository<UserDao, Long> {
 
     List<UserDao> findAll();
 
-    <T extends UserDao> T save(T bookDao);
+    UserDao save(UserDao bookDao);
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,6 +25,14 @@ public class BookController {
     @RequestMapping("/all")
     public List<BookDao> getAllBooks() {
         return bookService.getAllBooks();
+    }
+
+    @RequestMapping("/save/{title}/{author}/{category}")
+    public BookDao saveByTitleAuthorCategory(@PathVariable String title, @PathVariable long author, @PathVariable short category) {
+        List<Long> authors = new ArrayList<>();
+        authors.add(author);
+        BookDao bookDao = new BookDao(title, authors, category);
+        return bookService.save(bookDao);
     }
 
 }

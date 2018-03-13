@@ -24,4 +24,9 @@ public class BookServiceImpl implements BookService {
         return bookRepo.findAll();
     }
 
+    @Override
+    public BookDao save(BookDao bookDao) {
+        return bookRepo.save(bookDao);
+    }
+
 }
