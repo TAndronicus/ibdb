@@ -1,4 +1,4 @@
--- Database: ibdb
+﻿-- Database: ibdb
 
 -- DROP DATABASE ibdb;
 
@@ -12,4 +12,3 @@ CREATE DATABASE ibdb
 
 COMMENT ON DATABASE ibdb
   IS 'Internet book database.';
-

@@ -9,7 +9,7 @@ CREATE TABLE public."user"
   name character varying(30) NOT NULL,
   date_of_birth date,
   place_of_birth character varying(30),
-  CONSTRAINT "primaryKey" PRIMARY KEY (id)
+  CONSTRAINT user_primary_key PRIMARY KEY (id)
 )
 WITH (
   OIDS=FALSE
