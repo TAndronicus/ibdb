@@ -29,8 +29,7 @@ public class BookController {
 
     @RequestMapping("/save/{title}/{author}/{category}")
     public BookDao saveByTitleAuthorCategory(@PathVariable String title, @PathVariable long author, @PathVariable short category) {
-        List<Long> authors = new ArrayList<>();
-        authors.add(author);
+        Long[] authors = {author};
         BookDao bookDao = new BookDao(title, authors, category);
         return bookService.save(bookDao);
     }

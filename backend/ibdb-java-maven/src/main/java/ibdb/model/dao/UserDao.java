@@ -1,11 +1,13 @@
 package ibdb.model.dao;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "user", schema = "public")
 public class UserDao {

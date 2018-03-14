@@ -1,12 +1,13 @@
 package ibdb.model.dao;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "book", schema = "public")
 public class BookDao {
@@ -16,12 +17,12 @@ public class BookDao {
     @SequenceGenerator(name = "auto_gen_book", sequenceName = "book_id_seq", allocationSize = 1)
     private Long id;
     private String title;
-    private List<Long> author;
+    private Long[] author;
     private LocalDateTime year;
     private String publisher;
     private short cathegory;
 
-    public BookDao(String title, List<Long> author, short cathegory) {
+    public BookDao(String title, Long[] author, short cathegory) {
         this.title = title;
         this.author = author;
         this.cathegory = cathegory;
