@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +30,9 @@ public class BookController {
 
     @RequestMapping("/save/{title}/{author}/{category}")
     public BookDao saveByTitleAuthorCategory(@PathVariable String title, @PathVariable long author, @PathVariable short category) {
-        Long[] authors = {author};
-        BookDao bookDao = new BookDao(title, authors, category);
+        long[] authors = {author};
+        short[] categories = {category};
+        BookDao bookDao = new BookDao(title, authors, categories);
         return bookService.save(bookDao);
     }
 

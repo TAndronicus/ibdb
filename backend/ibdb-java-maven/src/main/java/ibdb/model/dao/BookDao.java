@@ -17,12 +17,12 @@ public class BookDao {
     @SequenceGenerator(name = "auto_gen_book", sequenceName = "book_id_seq", allocationSize = 1)
     private Long id;
     private String title;
-    private Long[] author;
     private LocalDateTime year;
     private String publisher;
-    private short cathegory;
+    private long[] author;
+    private short[] cathegory;
 
-    public BookDao(String title, Long[] author, short cathegory) {
+    public BookDao(String title, long[] author, short[] cathegory) {
         this.title = title;
         this.author = author;
         this.cathegory = cathegory;
