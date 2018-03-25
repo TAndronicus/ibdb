@@ -1,7 +1,9 @@
 package ibdb.model.dao;
 
+import ibdb.conf.DaoConfig;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,8 +11,11 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "book", schema = "public")
-public class BookDao {
+@Table(
+        name = "book",
+        schema = "public"
+)
+public class BookDao extends DaoConfig {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "auto_gen_book")
@@ -19,7 +24,19 @@ public class BookDao {
     private String title;
     private LocalDateTime year;
     private String publisher;
+    @Type(
+            type = "long-array"
+    )
+    @Column(
+            columnDefinition = "bigint[]"
+    )
     private long[] author;
+    @Type(
+            type = "short-array"
+    )
+    @Column(
+            columnDefinition = "smallint[]"
+    )
     private short[] cathegory;
 
     public BookDao(String title, long[] author, short[] cathegory) {
