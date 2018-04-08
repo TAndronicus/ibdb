@@ -25,6 +25,6 @@ public class ShortArrayType extends AbstractSingleColumnStandardBasicType<short[
 
     @Override
     public void setParameterValues(Properties parameters) {
-        ((ShortArrayType) getJavaTypeDescriptor()).setParameterValues(parameters);
+        ((ShortArrayTypeDescriptor) getJavaTypeDescriptor()).setParameterValues(parameters);
     }
 }
