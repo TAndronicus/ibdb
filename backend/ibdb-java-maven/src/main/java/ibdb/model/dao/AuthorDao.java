@@ -18,7 +18,7 @@ public class AuthorDao {
     private Long id;
     private String surname;
     private String name;
-    private String pseudonym;
+    private String[] pseudonym;
     private LocalDateTime dateOfBirth;
     private String placeOfBirth;
     private LocalDateTime dateOfDeath;

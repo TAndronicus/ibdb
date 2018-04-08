@@ -1,5 +1,6 @@
 package ibdb.controller;
 
+import ibdb.model.dao.MarkDao;
 import ibdb.model.dao.UserDao;
 import ibdb.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class UserController {
     @RequestMapping("/all")
     public List<UserDao> getAllUsers() {
         return userService.getAllUsers();
+    }
+
+    @RequestMapping("/mark/{id}")
+    public List<MarkDao> getAllMarks(@PathVariable long id) {
+        return userService.getAllMarks(id);
     }
 
     @RequestMapping("/save/{surname}/{name}")
