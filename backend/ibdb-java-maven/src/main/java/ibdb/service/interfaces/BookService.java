@@ -1,10 +1,11 @@
 package ibdb.service.interfaces;
 
 import ibdb.model.dao.BookDao;
+import ibdb.model.dao.MarkDao;
 
 import java.util.List;
 
-public interface BookService {
+public interface BookService extends RatedEntity{
 
     BookDao getBookById(long id);
 

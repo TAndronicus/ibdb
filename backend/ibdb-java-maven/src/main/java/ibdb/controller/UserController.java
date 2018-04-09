@@ -27,7 +27,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @RequestMapping("/mark/{id}")
+    @RequestMapping("/marks/{id}")
     public List<MarkDao> getAllMarks(@PathVariable long id) {
         return userService.getAllMarks(id);
     }

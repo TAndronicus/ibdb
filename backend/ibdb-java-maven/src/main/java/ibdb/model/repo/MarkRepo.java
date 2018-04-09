@@ -11,6 +11,8 @@ public interface MarkRepo extends JpaRepository<MarkDao, Long> {
 
     List<MarkDao> findByUser(long user);
 
+    List<MarkDao> findByBook(long book);
+
     MarkDao save(MarkDao markDao);
 
 }

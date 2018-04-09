@@ -5,13 +5,11 @@ import ibdb.model.dao.UserDao;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends RatedEntity{
 
     UserDao getUserById(long id);
 
     List<UserDao> getAllUsers();
-
-    List<MarkDao> getAllMarks(long user);
 
     UserDao save(UserDao userDao);
 }
