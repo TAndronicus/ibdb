@@ -1,8 +1,10 @@
 package ibdb.service.implementations;
 
 import ibdb.model.dao.AuthorDao;
+import ibdb.model.dao.BookDao;
 import ibdb.model.dao.MarkDao;
 import ibdb.model.repo.AuthorRepo;
+import ibdb.model.repo.BookRepo;
 import ibdb.model.repo.MarkRepo;
 import ibdb.service.interfaces.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class AuthorServiceImpl implements AuthorService{
     @Autowired
     MarkRepo markRepo;
 
+    @Autowired
+    BookRepo bookRepo;
+
     @Override
     public AuthorDao findById(long id) {
         return authorRepo.findById(id);
@@ -27,6 +32,11 @@ public class AuthorServiceImpl implements AuthorService{
     @Override
     public List<AuthorDao> findAll() {
         return authorRepo.findAll();
+    }
+
+    @Override
+    public List<BookDao> findAllBooks(long id) {
+        return bookRepo.findByAuthor(id);
     }
 
     @Override

@@ -2,6 +2,7 @@ package ibdb.controller;
 
 
 import ibdb.model.dao.AuthorDao;
+import ibdb.model.dao.BookDao;
 import ibdb.model.dao.MarkDao;
 import ibdb.service.interfaces.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ public class AuthorController {
     @RequestMapping("/marks/{id}")
     public List<MarkDao> getAllMarks(@PathVariable long id) {
         return authorService.getAllMarks(id);
+    }
+
+    @RequestMapping("/books/{id}")
+    public List<BookDao> findAllBooks(@PathVariable long id) {
+        return authorService.findAllBooks(id);
     }
 
     @RequestMapping("/save/{surname}")
