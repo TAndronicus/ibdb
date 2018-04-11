@@ -1,6 +1,7 @@
 package ibdb.controller;
 
 import ibdb.model.dao.BookDao;
+import ibdb.model.dao.CategoryDao;
 import ibdb.model.dao.MarkDao;
 import ibdb.service.interfaces.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +30,21 @@ public class BookController {
         return bookService.getAllBooks();
     }
 
-    @RequestMapping("marks/{id}")
+    @RequestMapping("/marks/{id}")
     public List<MarkDao> getAllMarks(@PathVariable long id) {
         return bookService.getAllMarks(id);
     }
 
+    @RequestMapping("/categories/{id}")
+    public List<CategoryDao> getAllCategories(@PathVariable long id) {
+        BookDao bookDao = bookService.getBookById(id);
+        return bookService.getAllCategories(bookDao);
+    }
+
     @RequestMapping("/save/{title}/{author}/{category}")
-    public BookDao saveByTitleAuthorCategory(@PathVariable String title, @PathVariable long author, @PathVariable short category) {
-        long[] authors = {author};
-        short[] categories = {category};
+    public BookDao saveByTitleAuthorCategory(@PathVariable String title, @PathVariable Long author, @PathVariable Short category) {
+        Long[] authors = {author};
+        Short[] categories = {category};
         BookDao bookDao = new BookDao(title, authors, categories);
         return bookService.save(bookDao);
     }

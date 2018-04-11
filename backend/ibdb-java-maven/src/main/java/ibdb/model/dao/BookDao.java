@@ -30,16 +30,16 @@ public class BookDao extends DaoConfig {
     @Column(
             columnDefinition = "bigint[]"
     )
-    private long[] author;
+    private Long[] author;
     @Type(
             type = "short-array"
     )
     @Column(
             columnDefinition = "smallint[]"
     )
-    private short[] cathegory;
+    private Short[] cathegory;
 
-    public BookDao(String title, long[] author, short[] cathegory) {
+    public BookDao(String title, Long[] author, Short[] cathegory) {
         this.title = title;
         this.author = author;
         this.cathegory = cathegory;
