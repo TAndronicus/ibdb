@@ -1,8 +1,10 @@
 package ibdb.controller;
 
+import ibdb.model.dao.AuthorDao;
 import ibdb.model.dao.BookDao;
 import ibdb.model.dao.CategoryDao;
 import ibdb.model.dao.MarkDao;
+import ibdb.model.repo.AuthorRepo;
 import ibdb.service.interfaces.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +21,9 @@ public class BookController {
 
     @Autowired
     BookService bookService;
+
+    @Autowired
+    AuthorRepo authorRepo;
 
     @RequestMapping("/{id}")
     public String getUserSurnameFromId(@PathVariable long id) {
@@ -39,6 +44,16 @@ public class BookController {
     public List<CategoryDao> getAllCategories(@PathVariable long id) {
         BookDao bookDao = bookService.getBookById(id);
         return bookService.getAllCategories(bookDao);
+    }
+
+    @RequestMapping("/authors/{id}")
+    public List<AuthorDao> getAllAuthors(@PathVariable long id) {
+        BookDao bookDao = bookService.getBookById(id);
+        List<AuthorDao> authorDaos = new ArrayList<>();
+        for(Long authorId : bookDao.getAuthor()) {
+            authorRepo.findById(authorId).ifPresent(authorDaos::add);
+        }
+        return authorDaos;
     }
 
     @RequestMapping("/save/{title}/{author}/{category}")
