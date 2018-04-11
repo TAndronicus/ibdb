@@ -29,10 +29,9 @@ public class AuthorServiceImpl implements AuthorService{
         return authorRepo.findAll();
     }
 
-    //TODO
     @Override
     public List<MarkDao> getAllMarks(long id) {
-        return null;
+        return markRepo.findByAuthor(id);
     }
 
     @Override
