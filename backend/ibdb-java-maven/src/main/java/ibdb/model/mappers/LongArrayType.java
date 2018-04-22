@@ -6,7 +6,7 @@ import org.hibernate.usertype.DynamicParameterizedType;
 
 import java.util.Properties;
 
-public class LongArrayType extends AbstractSingleColumnStandardBasicType<long[]> implements DynamicParameterizedType {
+public class LongArrayType extends AbstractSingleColumnStandardBasicType<Long[]> implements DynamicParameterizedType {
 
     public static final LongArrayType INSTANCE = new LongArrayType();
 

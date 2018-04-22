@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -22,7 +22,7 @@ public class BookDao extends DaoConfig {
     @SequenceGenerator(name = "auto_gen_book", sequenceName = "book_id_seq", allocationSize = 1)
     private Long id;
     private String title;
-    private LocalDateTime year;
+    private LocalDate year;
     private String publisher;
     @Type(
             type = "long-array"

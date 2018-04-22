@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("/author")
@@ -42,6 +46,22 @@ public class AuthorController {
     @RequestMapping("/save/{surname}")
     public AuthorDao saveAuthorBySurname(@PathVariable String surname) {
         AuthorDao authorDao = new AuthorDao(surname);
+        return authorService.save(authorDao);
+    }
+
+    @RequestMapping("/save/{surname}/{name}/{pseudonym}/{dateOfBirth}/{placeOfBirth}/{dateOfDeath}/{placeOfDeath}")
+    public AuthorDao saveAuthor(@PathVariable String surname, @PathVariable String name, @PathVariable String pseudonym,
+                                @PathVariable String dateOfBirth, @PathVariable String placeOfBirth, @PathVariable String dateOfDeath,
+                                @PathVariable String placeOfDeath) {
+        AuthorDao authorDao = new AuthorDao();
+        authorDao.setSurname(surname);
+        authorDao.setName(name);
+        List<String> pseudonyms = Stream.of(pseudonym.split(";")).map(item -> item.replaceAll(",", " ")).collect(Collectors.toList());
+        authorDao.setPseudonym(pseudonyms.toArray(new String[pseudonyms.size()]));
+        authorDao.setDateOfBirth(LocalDate.parse(dateOfBirth));
+        authorDao.setPlaceOfBirth(placeOfBirth);
+        authorDao.setDateOfDeath(LocalDate.parse(dateOfDeath));
+        authorDao.setPlaceOfDeath(placeOfDeath);
         return authorService.save(authorDao);
     }
 }

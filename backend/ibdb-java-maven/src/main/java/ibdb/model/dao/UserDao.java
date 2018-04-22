@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -18,7 +18,7 @@ public class UserDao {
     private Long id;
     private String surname;
     private String name;
-    private LocalDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
     private String placeOfBirth;
 
     public UserDao(String surname, String name) {
