@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AuthorServiceImpl implements AuthorService{
@@ -42,6 +43,18 @@ public class AuthorServiceImpl implements AuthorService{
     @Override
     public List<MarkDao> getAllMarks(long id) {
         return markRepo.findByAuthor(id);
+    }
+
+    @Override
+    public Optional<Double> getMeanMark(long id) {
+        List<MarkDao> marks = getAllMarks(id);
+        int sum = 0;
+        int count = 0;
+        for(MarkDao mark : marks) {
+            sum += mark.getMark();
+            count += 1;
+        }
+        return count == 0 ? Optional.empty() : Optional.of(Double.valueOf(sum / count));
     }
 
     @Override

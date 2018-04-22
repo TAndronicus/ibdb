@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,6 +37,11 @@ public class AuthorController {
     @RequestMapping("/marks/{id}")
     public List<MarkDao> getAllMarks(@PathVariable long id) {
         return authorService.getAllMarks(id);
+    }
+
+    @RequestMapping("/mean_mark/{id}")
+    public Optional<Double> getMeanMark(@PathVariable long id) {
+        return authorService.getMeanMark(id);
     }
 
     @RequestMapping("/books/{id}")

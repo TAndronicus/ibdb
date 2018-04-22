@@ -42,6 +42,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Optional<Double> getMeanMark(long id) {
+        return Optional.empty();
+    }
+
+    @Override
     public List<CategoryDao> getAllCategories(BookDao bookDao) {
         Short[] categoryIds = bookDao.getCathegory();
         List<CategoryDao> categories = new ArrayList<>();
